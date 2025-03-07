@@ -12,7 +12,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'pylsp', 'lua_ls' }
+local servers = { 'pyright', 'lua_ls' }
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         -- on_attach = my_custom_on_attach,
@@ -51,3 +51,21 @@ cmp.setup {
         { name = 'nvim_lsp' },
     },
 }
+
+
+-- terminal
+local function open_bottom_terminal(height)
+  vim.cmd("botright split term://bash")
+  local terminal_win = vim.api.nvim_get_current_win() -- Get the terminal window
+  vim.api.nvim_win_set_height(terminal_win, height)
+  vim.cmd("wincmd j") -- Move focus back to the original window
+end
+
+vim.api.nvim_create_user_command('BottomTerm', function(args)
+  local height = tonumber(args.args) or 10
+  open_bottom_terminal(height)
+end, { nargs = '?' })
+
+vim.keymap.set("n", "<leader>t", ":BottomTerm<CR>")
+
+vim.keymap.set("n", "<leader>n", ":e ~/.config/nvim/init.lua<CR>")
