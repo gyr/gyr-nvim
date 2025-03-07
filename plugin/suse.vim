@@ -47,9 +47,20 @@ augroup END
 " }}}1
 "===============================================================================
 " Abbreviations:{{{1
-
+"-------------------------------------------------------------------------------
+" Insert Mode: {{{2
 iab oscvc,, -------------------------------------------------------------------<CR><C-R>=strftime("%a %b %d %H:%M:%S UTC %Y")<cr> - Gustavo Yokoyama Ribeiro <gyribeiro@suse.com><C-R>=gyrlib#EatChar('\s')<CR><CR><CR>
-cab es,, edit $HOME/.gyr.d/suse.d/**/*<C-R>=gyrlib#EatChar('\s')<CR>
+"}}}2
+"-------------------------------------------------------------------------------
+" Plugins: {{{2
+" FZF: {{{3
+if isdirectory($HOME."/.config/nvim/pack/vendor/start/fzf.vim")
+    cab es,, Files $HOME/.gyr.d/suse.d/<CR>
+else
+    cab es,, edit $HOME/.gyr.d/suse.d/**/*<C-R>=gyrlib#EatChar('\s')<CR>
+endif
+"}}}2
+"-------------------------------------------------------------------------------
 
 " }}}1
 "===============================================================================

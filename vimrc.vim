@@ -929,7 +929,6 @@ if isdirectory($HOME."/.config/nvim/pack/vendor/start/fzf.vim")
     nnoremap <leader>h :History<CR>
 endif
 
-
 "}}}2
 "-------------------------------------------------------------------------------
 
@@ -939,6 +938,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 "             A B B R E V I A T I O N S              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+"-------------------------------------------------------------------------------
+" Normal Mode:{{{2
 " abbreviation for the current file name
 " Equivalents to <C-R>%
 "ab file,, <C-R>=expand("%:t")<CR><C-R>=gyrlib#EatChar('\s')<CR>
@@ -946,7 +947,9 @@ endif
 ab file,, <C-R>%<C-R>=gyrlib#EatChar('\s')<CR>
 ab dirfile,, <C-R>=expand("%:p")<CR><C-R>=gyrlib#EatChar('\s')<CR>
 ab dir,, <C-R>=expand("%:p:h")<CR><C-R>=gyrlib#EatChar('\s')<CR>
-
+"}}}2
+"-------------------------------------------------------------------------------
+" Command Mode:{{{2
 " Paste in commnad line the word under cursor
 "cab p,, <C-R><C-W>
 " If forgot to sudo vim a file, do that with :w!!
@@ -956,17 +959,29 @@ cab wsudo,, w !sudo tee % > /dev/null <CR>
 " Copy the entire buffer to the system clipboard
 cab y,, %y+<CR>
 
-"terminal with 5 rows at the bottom
-cab bterm,, bot term ++rows=10<CR>
-
-cab eg,, edit $HOME/.gyr.d/**/*<C-R>=gyrlib#EatChar('\s')<CR>
-cab ev,, edit $HOME/.config/nvim/**/*<C-R>=gyrlib#EatChar('\s')<CR>
-cab e.,, edit <C-R>=expand("%:p:h")<CR>/**/*<C-R>=gyrlib#EatChar('\s')<CR>
-
+"}}}2
+"-------------------------------------------------------------------------------
+" Insert Mode: {{{2
 iab gyr,, Gustavo Yokoyama Ribeiro<C-R>=gyrlib#EatChar('\s')<CR>
 iab gyrmail,, Gustavo Yokoyama Ribeiro <gyr AT protonmail DOT ch><C-R>=gyrlib#EatChar('\s')<CR>
 iab ts,, <C-R>=strftime("%Y%m%d %H:%M:%S")<cr><C-R>=gyrlib#EatChar('\s')<CR>
 iab dt,, <C-R>=strftime("%Y%m%d")<cr><C-R>=gyrlib#EatChar('\s')<CR>
+"}}}2
+"-------------------------------------------------------------------------------
+" Plugins: {{{2
+" FZF: {{{3
+if isdirectory($HOME."/.config/nvim/pack/vendor/start/fzf.vim")
+    cab eg,, Files $HOME/.gyr.d/<CR>
+    cab ev,, Files $HOME/.config/nvim/<CR>
+    cab e.,, Files <C-R>=expand("%:p:h")<CR>/<CR>
+else
+    cab eg,, edit $HOME/.gyr.d/**/*<C-R>=gyrlib#EatChar('\s')<CR>
+    cab ev,, edit $HOME/.config/nvim/**/*<C-R>=gyrlib#EatChar('\s')<CR>
+    cab e.,, edit <C-R>=expand("%:p:h")<CR>/**/*<C-R>=gyrlib#EatChar('\s')<CR>
+endif
+
+"}}}2
+"-------------------------------------------------------------------------------
 
 "}}}1
 "===============================================================================
