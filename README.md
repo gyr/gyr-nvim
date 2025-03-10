@@ -17,6 +17,11 @@ PLUGINS=" http://github.com/dense-analysis/ale.git
   http://github.com/mhinz/vim-signify.git"
   http://github.com/tpope/vim-unimpaired.git
   http://github.com/vimwiki/vimwiki.git
+  https://github.com/nvim-treesitter/nvim-treesitter.git
+  https://github.com/nvim-treesitter/nvim-treesitter-context.git
+  https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
+  https://github.com/lukas-reineke/indent-blankline.nvim.git
+  
 mkdir -p ~/.vim/pack/vendor/start
 for i in ${PLUGINS}
 do
