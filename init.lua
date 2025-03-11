@@ -243,6 +243,29 @@ require'nvim-treesitter.configs'.setup {
 -- indent-blankline
 require("ibl").setup()
 
+-- fzf-lua
+vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<cr>")
+vim.keymap.set("n", "<leader>ffh", "<cmd>FzfLua files cwd=~/<cr>")
+vim.keymap.set("n", "<leader>ffg", "<cmd>FzfLua files cwd=~/.gyr.d/<cr>")
+vim.keymap.set("n", "<leader>ffs", "<cmd>FzfLua files cwd=~/.gyr.d/suse.d/<cr>")
+vim.keymap.set("n", "<leader>ffv", "<cmd>FzfLua files cwd=~/.config/nvim/<cr>")
+vim.keymap.set("n", "<leader>fh", "<cmd>FzfLua oldfiles<cr>")
+
+vim.keymap.set("n", "<leader>fb", "<cmd>FzfLua buffers<cr>")
+vim.keymap.set("n", "<leader>fq", "<cmd>FzfLua quickfix<cr>")
+vim.keymap.set("n", "<leader>fl", "<cmd>FzfLua blines<cr>")
+vim.keymap.set("n", "<leader>ft", "<cmd>FzfLua treesitter<cr>")
+
+vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua live_grep<cr>")
+
+vim.keymap.set("n", "<leader>flr", "<cmd>FzfLua lsp_references<cr>")
+vim.keymap.set("n", "<leader>fli", "<cmd>FzfLua lsp_implementations<cr>")
+
+vim.keymap.set("n", "<leader>fr", "<cmd>FzfLua registers<cr>")
+vim.keymap.set("n", "<leader>fk", "<cmd>FzfLua keymaps<cr>")
+vim.keymap.set("n", "<leader>fm", "<cmd>FzfLua marks<cr>")
+vim.keymap.set("n", "<leader>fj", "<cmd>FzfLua jumps<cr>")
+
 -- terminal
 local function open_bottom_terminal(height)
   vim.cmd("botright split term://bash")
