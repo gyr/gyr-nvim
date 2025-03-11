@@ -23,6 +23,8 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities,
     }
 end
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
+vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references)
 
 -- nvim-cmp
 local cmp = require 'cmp'
