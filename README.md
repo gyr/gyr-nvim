@@ -8,8 +8,7 @@ Installing plugins:
 ```
 PLUGINS=" http://github.com/dense-analysis/ale.git
   http://github.com/ashen-org/ashen.nvim.git
-  http://github.com/junegunn/fzf.git
-  http://github.com/junegunn/fzf.vim.git
+  https://github.com/ibhagwan/fzf-lua.git
   http://github.com/tpope/vim-fugitive.git
   http://github.com/neovim/nvim-lspconfig.git
   http://github.com/hrsh7th/nvim-cmp.git
