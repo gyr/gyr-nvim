@@ -7,7 +7,8 @@ vim.cmd("set mouse=")
 -- vim.cmd("colorscheme ashen")
 require("ashen").load()
 
---require'lspconfig'.pylsp.setup{}
+-- Enable rounded borders in floating windows
+vim.o.winborder = 'rounded'
 
 -- cmp-nvim-lsp
 -- Add additional capabilities supported by nvim-cmp
@@ -23,8 +24,6 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities,
     }
 end
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
-vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references)
 
 -- nvim-cmp
 local cmp = require 'cmp'
@@ -217,11 +216,11 @@ require'nvim-treesitter.configs'.setup {
       -- Make it even more gradual by adding multiple queries and regex.
       goto_next = {
         ["]o"] = "@loop.outer",
-        ["]d"] = "@conditional.outer",
+        ["]i"] = "@conditional.outer",
       },
       goto_previous = {
-        ["[d"] = "@conditional.outer",
         ["[o"] = "@loop.outer",
+        ["[i"] = "@conditional.outer",
       }
     },
     require'nvim-treesitter.configs'.setup {
@@ -282,3 +281,30 @@ end, { nargs = '?' })
 vim.keymap.set("n", "<leader>t", ":BottomTerm<CR>")
 
 vim.keymap.set("n", "<leader>n", ":e ~/.config/nvim/init.lua<CR>")
+
+-- nvim 0.11: https://gpanders.com/blog/whats-new-in-neovim-0-11
+-- Diagnostics
+-- Virtual text handler changed from opt-out to opt-in
+vim.diagnostic.config({
+  -- Use the default configuration
+  -- virtual_lines = true
+  -- virtual_text = true
+
+  -- Alternatively, customize specific options
+   virtual_lines = {
+   -- Only show virtual line diagnostics for the current cursor line
+   current_line = true,
+  },
+  -- virtual_text = {
+  --     current_line = true,
+  -- },
+})
+
+-- grn in Normal mode maps to vim.lsp.buf.rename()
+-- grr in Normal mode maps to vim.lsp.buf.references()
+-- gri in Normal mode maps to vim.lsp.buf.implementation()
+-- gO in Normal mode maps to vim.lsp.buf.document_symbol() (this is analogous to the gO mappings in help buffers and :Man page buffers to show a “table of contents”)
+-- gra in Normal and Visual mode maps to vim.lsp.buf.code_action()
+-- CTRL-S in Insert and Select mode maps to vim.lsp.buf.signature_help()
+-- [d and ]d move between diagnostics in the current buffer ([D jumps to the first diagnostic, ]D jumps to the last)
+

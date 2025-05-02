@@ -29,7 +29,12 @@ if isdirectory($HOME."/.vim/pack/vendor/start/vimwiki")
     let suse_wiki.path_html = '~/.gyr.d/suse.d/public_html/'
     let suse_wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'sh': 'sh', 'perl': 'perl', 'conf': 'conf', 'fstab': 'fstab', 'deb': 'debsources', 'resolv': 'resolv', 'xml': 'xml'}
     let suse_list = [suse_wiki]
-    let g:vimwiki_list = g:vimwiki_list + suse_list
+    if exists("g:vimwiki_list")
+        let g:vimwiki_list = g:vimwiki_list + suse_list
+    else
+        let g:vimwiki_list = suse_list
+    endif
+
 endif
 
 " }}}1

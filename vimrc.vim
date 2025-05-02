@@ -47,7 +47,7 @@ filetype plugin indent on
 " Important:{{{2
 set nocompatible    " Modo "No compatible" . Valores padrao para algumas opcoes sao adequados ao Vim, nao Vi.
 set cpoptions+=$J
-set pastetoggle=<Insert>
+"set pastetoggle=<Insert>
 
 "}}}2
 "-------------------------------------------------------------------------------
@@ -334,7 +334,7 @@ set viminfo+='10,:20
 "endif
 
 set encoding=utf-8
-let &termencoding = &encoding
+"let &termencoding = &encoding
 let &fileencoding = &encoding
 let &fileencodings = &encoding
 

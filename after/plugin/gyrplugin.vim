@@ -70,7 +70,7 @@ if g:gyrplugin_map_keys
     "noremap <silent><unique><Leader>h :set lz<Bar>call gyrlib#ToggleShowEvilspace()<Bar>set nolz<CR>
     "execute "noremap <silent><unique>" g:gyrplugin_map_prefix."r" ":set lz<Bar>call gyrlib#RunShellCommand()<Bar>set nolz<CR>"
 
-    inoremap <unique><Tab> <C-R>=gyrlib#SmartComplete()<CR>
+    inoremap <Tab> <C-R>=gyrlib#SmartComplete()<CR>
 
     onoremap an :<c-u>call gyrlib#NextTextObject('a', 'f')<cr>
     xnoremap an :<c-u>call gyrlib#NextTextObject('a', 'f')<cr>
