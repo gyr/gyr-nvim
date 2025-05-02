@@ -687,7 +687,8 @@ inoremap <expr> #! "#!" . substitute(system("which env"), "\n", "", "") . " " . 
 "noremap <unique><Leader>f gqip
 
 " Show changes made to current buffer since the last save
-noremap <unique><Leader>diff :w !delta -s % -<CR>
+"noremap <unique><Leader>diff :w !delta -s % -<CR>
+noremap <unique><Leader>diff :w !diff % -<CR>
 
 " if we have 3 * in a row make them into **/*
 " this only applied on the nedn of a line
