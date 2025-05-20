@@ -11,11 +11,7 @@ PLUGINS=" http://github.com/dense-analysis/ale.git
   https://github.com/ibhagwan/fzf-lua.git
   http://github.com/tpope/vim-fugitive.git
   http://github.com/neovim/nvim-lspconfig.git
-  http://github.com/hrsh7th/nvim-cmp.git
-  http://github.com/hrsh7th/cmp-nvim-lsp.git
-  https://github.com/hrsh7th/cmp-buffer.git
-  https://github.com/hrsh7th/cmp-cmdline.git
-  https://github.com/hrsh7th/cmp-path.git
+  https://github.com/Saghen/blink.cmp.git
   http://github.com/mhinz/vim-signify.git"
   http://github.com/tpope/vim-unimpaired.git
   http://github.com/vimwiki/vimwiki.git
