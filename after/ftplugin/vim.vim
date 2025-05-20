@@ -25,6 +25,14 @@ setlocal tags+=,~/.vim-tmp/tags/vimtags
 "" regenerate tags
 "call system("ctags -R -f ~/.vim/tags/vimtags ~/.vim/bundle/")
 
+"-------------------------------------------------------------------------------
+" Plugin:{{{2
+"
+" ale: {{{3
+let b:ale_linters = {
+    \   'vim': ['vint'],
+    \ }
+
 " }}}1
 "===============================================================================
 " Abbreviation:{{{1
