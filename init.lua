@@ -10,24 +10,14 @@ require("ashen").load()
 -- Enable rounded borders in floating windows
 vim.o.winborder = "rounded"
 
--- cmp-nvim-lsp
--- Add additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- lspconfig
+vim.lsp.enable("pyright")
+vim.lsp.enable("lua_ls")
 
-local lspconfig = require("lspconfig")
-
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { "pyright", "lua_ls" }
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup({
-        -- on_attach = my_custom_on_attach,
-        capabilities = capabilities,
-    })
-end
--- Get rid of: undefined-global: Undefined global `vim`.
-lspconfig["lua_ls"].setup({
+vim.lsp.config("lua_ls", {
+    -- Server-specific settings. See `:help lsp-quickstart`
     settings = {
-        Lua = {
+        ["lua_ls"] = {
             diagnostics = {
                 globals = { "vim" },
             },
@@ -35,60 +25,70 @@ lspconfig["lua_ls"].setup({
     },
 })
 
--- nvim-cmp
-local cmp = require("cmp")
-cmp.setup({
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+local blink = require("blink.cmp")
+blink.setup({
+    -- Display a preview of the selected item on the current line
+    completion = {
+        -- 'prefix' will fuzzy match on the text before the cursor
+        -- 'full' will fuzzy match on the text before _and_ after the cursor
+        -- example: 'foo_|_bar' will match 'foo_' for 'prefix' and 'foo__bar' for 'full'
+        keyword = { range = "full" },
+        -- Show documentation when selecting a completion item
+        -- C-space: Open menu or open docs if already open
+        --documentation = { auto_show = true, auto_show_delay_ms = 500 },
+        list = {
+            selection = {
+                preselect = function(ctx)
+                    return not require("blink.cmp").snippet_active({ direction = 1 })
+                end,
+            },
+        },
+        -- Display a preview of the selected item on the current line
+        ghost_text = { enabled = true },
     },
-    mapping = cmp.mapping.preset.insert({
-        ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
-        ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
-        -- C-b (back) C-f (forward) for snippet placeholder navigation.
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<CR>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
-    }),
-    sources = {
-        { name = "nvim_lsp" },
-    },
-})
+    keymap = {
+        preset = "enter",
 
--- cmp-cmdline
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ "/", "?" }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = "buffer" },
+        ["<Tab>"] = {
+            function(cmp)
+                if cmp.snippet_active() then
+                    return cmp.accept()
+                else
+                    return cmp.select_next()
+                end
+            end,
+            "snippet_forward",
+            "fallback",
+        },
+        ["<S-Tab>"] = {
+            function(cmp)
+                if cmp.snippet_active() then
+                    return cmp.accept()
+                else
+                    return cmp.select_prev()
+                end
+            end,
+            "snippet_backward",
+            "fallback",
+        },
     },
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-        { name = "path" },
-    }, {
-        { name = "cmdline" },
-    }),
-    matching = { disallow_symbol_nonprefix_matching = false },
+    cmdline = {
+        enabled = true,
+        completion = {
+            menu = { auto_show = true },
+            list = {
+                selection = { preselect = false },
+            },
+        },
+    },
+    sources = {
+        default = { "lsp", "buffer", "snippets", "path", "omni" },
+    },
+    -- Experimental signature help support
+    --signature = { enabled = true },
+    -- Use a preset for snippets, check the snippets documentation for more information
+    -- snippets = { preset = "default" | "luasnip" | "mini_snippets" },
+    fuzzy = { implementation = "lua" },
 })
 
 -- nvim-treesitter
