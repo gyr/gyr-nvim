@@ -17,9 +17,9 @@ vim.lsp.enable("lua_ls")
 vim.lsp.config("lua_ls", {
     -- Server-specific settings. See `:help lsp-quickstart`
     settings = {
-        ["lua_ls"] = {
-            diagnostics = {
-                globals = { "vim" },
+        Lua = {
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
             },
         },
     },
