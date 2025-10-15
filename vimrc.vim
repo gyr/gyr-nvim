@@ -311,7 +311,7 @@ if exists('+undodir') | set undodir=~/.nvim-tmp/undo,~/.tmp,~/tmp,/var/tmp,/tmp 
 "}}}2
 "-------------------------------------------------------------------------------
 " Running make and jumping to errors:{{{2
-set grepprg=rg\ --vimgrep\ $*
+set grepprg=rg\ --color=never\ --vimgrep\ $*
 set grepformat=%f:%l:%c:%m
 
 "}}}2
