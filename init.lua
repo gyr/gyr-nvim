@@ -36,6 +36,11 @@ blink.setup({
         -- Show documentation when selecting a completion item
         -- C-space: Open menu or open docs if already open
         --documentation = { auto_show = true, auto_show_delay_ms = 500 },
+        menu = {
+            draw = {
+                treesitter = { "lsp" },
+            },
+        },
         list = {
             selection = {
                 preselect = function(ctx)
@@ -91,10 +96,13 @@ blink.setup({
     fuzzy = { implementation = "lua" },
 })
 
+
+-- =============================================================================
 -- nvim-treesitter
+-- =============================================================================
 require("nvim-treesitter.configs").setup({
     -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-    ensure_installed = { "lua", "vim", "python", "xml", "yaml", "bash" },
+    ensure_installed = { "lua", "vim", "python", "xml", "yaml", "bash", "go" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -132,18 +140,18 @@ require("nvim-treesitter.configs").setup({
 
 -- nvin-treesitter-context
 require("treesitter-context").setup({
-    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-    multiwindow = false, -- Enable multiwindow support.
-    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-    min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+    enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
+    multiwindow = false,      -- Enable multiwindow support.
+    max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
+    min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
     line_numbers = true,
     multiline_threshold = 20, -- Maximum number of lines to show for a single context
-    trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-    mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
+    trim_scope = "outer",     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+    mode = "cursor",          -- Line used to calculate context. Choices: 'cursor', 'topline'
     -- Separator between context and content. Should be a single character string, like '-'.
     -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
     separator = nil,
-    zindex = 20, -- The Z-index of the context window
+    zindex = 20,     -- The Z-index of the context window
     on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 })
 
@@ -179,7 +187,7 @@ require("nvim-treesitter.configs").setup({
             -- mapping query_strings to modes.
             selection_modes = {
                 ["@parameter.outer"] = "v", -- charwise
-                ["@function.outer"] = "V", -- linewise
+                ["@function.outer"] = "V",  -- linewise
                 ["@class.outer"] = "<c-v>", -- blockwise
             },
             -- If you set this to `true` (default is `false`) then any textobject is
