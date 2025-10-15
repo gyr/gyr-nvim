@@ -305,10 +305,11 @@ end, { nargs = "?" })
 vim.keymap.set("n", "<leader>t", ":BottomTerm<CR>", { desc = 'Open terminal at the botton' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-vim.keymap.set("n", "<leader>n", ":e ~/.config/nvim/init.lua<CR>")
+-- =============================================================================
+-- DIAGNOSTICS
+-- =============================================================================
 
 -- nvim 0.11: https://gpanders.com/blog/whats-new-in-neovim-0-11
--- Diagnostics
 -- Virtual text handler changed from opt-out to opt-in
 vim.diagnostic.config({
     -- Use the default configuration
@@ -331,6 +332,18 @@ vim.keymap.set("n", "gK", function()
     local new_config = not vim.diagnostic.config().virtual_lines
     vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = "Toggle diagnostic virtual_lines" })
+vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+
+-- autocommand
+-- https://github.com/adibhanna/minimal-vim/blob/main/lua/config/autocmds.lua
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
 
 -- grn in Normal mode maps to vim.lsp.buf.rename()
 -- grr in Normal mode maps to vim.lsp.buf.references()
