@@ -6,8 +6,7 @@ git clone --recursive git://github.com/gyr/dotnvim.git ~/.config/nvim
 
 Installing plugins:
 ```
-PLUGINS=" http://github.com/dense-analysis/ale.git
-  http://github.com/ashen-org/ashen.nvim.git
+PLUGINS="http://github.com/ashen-org/ashen.nvim.git
   https://github.com/ibhagwan/fzf-lua.git
   http://github.com/tpope/vim-fugitive.git
   http://github.com/neovim/nvim-lspconfig.git
@@ -19,6 +18,7 @@ PLUGINS=" http://github.com/dense-analysis/ale.git
   https://github.com/nvim-treesitter/nvim-treesitter-context.git
   https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
   https://github.com/lukas-reineke/indent-blankline.nvim.git
+  https://github.com/stevearc/conform.nvim.git
   
 mkdir -p ~/.vim/pack/vendor/start
 for i in ${PLUGINS}

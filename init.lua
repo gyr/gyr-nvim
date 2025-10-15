@@ -10,9 +10,76 @@ require("ashen").load()
 -- Enable rounded borders in floating windows
 vim.o.winborder = "rounded"
 
--- lspconfig
-vim.lsp.enable("pyright")
-vim.lsp.enable("lua_ls")
+vim.keymap.set("n", "<leader>n", ":e ~/.config/nvim/init.lua<CR>", { desc = 'Open init.lua' })
+
+-- =============================================================================
+-- LSP: lspconfig
+-- =============================================================================
+-- This function defines actions/keymaps that run when *any* LSP client attaches.
+local on_attach = function(client, bufnr)
+    -- Disable features on specific servers to manage conflicts
+    if client.name == 'pyright' then
+        -- Pyright's formatting is disabled to defer to conform.nvim
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+
+    elseif client.name == 'ruff' then
+        -- Ruff's core purpose is linting/fixes, so disable things Pyright handles better
+        -- like hover/completion if they cause conflicts or visual clutter.
+        client.server_capabilities.hoverProvider = false
+        -- Note: Ruff does not provide completion, so no need to disable that.
+    end
+
+    -- Buffer-local keymaps for LSP features
+    local opts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set('n', 'grd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'grk', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'grf', vim.lsp.buf.format, { desc = 'Format current buffer using lsp' })
+    -- grn in Normal mode maps to vim.lsp.buf.rename()
+    -- grr in Normal mode maps to vim.lsp.buf.references()
+    -- gri in Normal mode maps to vim.lsp.buf.implementation()
+    -- gO in Normal mode maps to vim.lsp.buf.document_symbol() (this is analogous to the gO mappings in help buffers and :Man page buffers to show a “table of contents”)
+    -- gra in Normal and Visual mode maps to vim.lsp.buf.code_action(): Use Code Action to apply lint fixes/suggestions from Ruff/Pyright:
+    -- CTRL-S in Insert and Select mode maps to vim.lsp.buf.signature_help()
+    -- [d and ]d move between diagnostics in the current buffer ([D jumps to the first diagnostic, ]D jumps to the last)
+end
+
+-- Create an Autocommand to run the 'on_attach' logic on LspAttach event
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('LspConfigPython', { clear = true }),
+    callback = function(args)
+        on_attach(vim.lsp.get_client_by_id(args.data.client_id), args.buf)
+    end,
+})
+
+-- A. Configure Pyright (Core LSP and Type Checking)
+-- We override the default config provided by nvim-lspconfig
+vim.lsp.config('pyright', {
+    -- We attach the general on_attach function via the Autocommand above
+    settings = {
+        python = {
+            analysis = {
+                -- Crucial: Disable general linting in Pyright to use Ruff instead
+                ignore = { '*' },
+                typeCheckingMode = 'strict',
+            },
+        },
+        pyright = {
+            -- Disable Pyright's auto-organize to let Ruff handle it
+            disableOrganizeImports = true,
+        },
+    }
+})
+
+-- B. Configure Ruff (Real-time Linting and Fixes)
+-- We attach the general on_attach function via the Autocommand above
+vim.lsp.config('ruff', {
+    -- Ruff server is configured by nvim-lspconfig to run the 'ruff server' command
+    init_options = {
+        -- Ruff-specific settings can go here if needed
+        logLevel = 'warning',
+    },
+})
 
 vim.lsp.config("lua_ls", {
     -- Server-specific settings. See `:help lsp-quickstart`
@@ -25,6 +92,56 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+vim.lsp.enable("pyright")
+vim.lsp.enable("ruff")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("gopls")
+
+-- =============================================================================
+-- FORMATTING: conform
+-- =============================================================================
+local conform = require("conform")
+
+conform.setup({
+    -- Define Ruff Format as the dedicated formatter for Python
+    formatters_by_ft = {
+        python = { "ruff_format" },
+    },
+    -- Format on save logic
+    -- Explicitly set format_on_save to false or nil
+    -- This prevents the BufWritePre autocmd from being installed.
+    format_on_save = nil,
+    -- uncomment lines below to enable format on save
+    -- format_on_save = {
+    --     async = true,
+    --     timeout_ms = 500,
+    --     -- 'lsp_format = "never"' ensures we rely ONLY on ruff_format and not Pyright/Ruff LSPs for formatting
+    --     lsp_format = "never",
+    --     pattern = { "*.py" },
+    --     callback = function(args)
+    --         conform.format({
+    --             bufnr = args.buf,
+    --             async = true,
+    --             timeout_ms = 500,
+    --         })
+    --     end,
+    -- },
+})
+
+-- Keymap for manual formatting
+vim.keymap.set({ "n", "v" }, "<leader>fmt", function()
+    conform.format({
+        --  ensures we rely ONLY on ruff_format and not Pyright/Ruff LSPs for formatting
+        lsp_format = "never",
+        -- Run synchronously: wait for format before returning control
+        async = false,
+        timeout_ms = 1000,
+    })
+end, { desc = "Format file or range using Ruff (no auto-save)" })
+
+-- =============================================================================
+-- AUTO-COMPLETIOTN: blink
+-- =============================================================================
 local blink = require("blink.cmp")
 blink.setup({
     -- Display a preview of the selected item on the current line
@@ -345,10 +462,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
--- grn in Normal mode maps to vim.lsp.buf.rename()
--- grr in Normal mode maps to vim.lsp.buf.references()
--- gri in Normal mode maps to vim.lsp.buf.implementation()
--- gO in Normal mode maps to vim.lsp.buf.document_symbol() (this is analogous to the gO mappings in help buffers and :Man page buffers to show a “table of contents”)
--- gra in Normal and Visual mode maps to vim.lsp.buf.code_action()
--- CTRL-S in Insert and Select mode maps to vim.lsp.buf.signature_help()
--- [d and ]d move between diagnostics in the current buffer ([D jumps to the first diagnostic, ]D jumps to the last)
