@@ -148,10 +148,10 @@ if has('statusline')
         set statusline+=%*
     catch
     endtry
-    try
-        set statusline+=\|%{gyrlib#LinterStatus()}
-    catch
-    endtry
+    "try
+    "    set statusline+=\|%{gyrlib#LinterStatus()}
+    "catch
+    "endtry
     set statusline+=\|%{&ff} " file format
     set statusline+=\|%{strlen(&fenc)?&fenc:'none'} " file enconding
     set statusline+=\|%Y      " file type
