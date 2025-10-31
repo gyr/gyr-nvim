@@ -179,7 +179,7 @@ endfunction
 function! gyrlib#SaveCurrentSession()
     try
         let l:session_name = input("Enter session file name (empty cancels): ")
-        let l:session_dir = $HOME . "/.vim-tmp/sessions"
+        let l:session_dir = $HOME . "/.nvim-tmp/sessions"
         let l:session_ext = ".vim"
         if l:session_name != ''
             try
