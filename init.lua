@@ -92,6 +92,15 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+vim.lsp.config("gopls", {
+    settings = {
+        gopls = {
+            analyses = {unusedparams = true},
+            staticcheck = true,
+        },
+    },
+})
+
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("lua_ls")
