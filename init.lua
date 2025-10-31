@@ -471,3 +471,24 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+-- Highlight the element under cursor
+vim.api.nvim_create_autocmd({'CursorHold'}, {
+  buffer = bufnr, -- current buffer number
+  callback = function()
+    vim.lsp.buf.document_highlight()
+  end,
+})
+
+vim.api.nvim_create_autocmd({'CursorMoved'}, {
+  buffer = bufnr,
+  callback = function()
+    vim.lsp.buf.clear_references()
+  end,
+})
+
+-- Set the color of highlighted element
+vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "#444444", fg = "#FFFFFF" })
+
+-- Set update time to 500 milliseconds (0.5 seconds) to fix CursorHold trigger
+-- time
+vim.opt.updatetime = 500
