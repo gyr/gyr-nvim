@@ -19,6 +19,7 @@ PLUGINS="http://github.com/ashen-org/ashen.nvim.git
   https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
   https://github.com/lukas-reineke/indent-blankline.nvim.git
   https://github.com/stevearc/conform.nvim.git
+  https://github.com/rachartier/tiny-glimmer.nvim.git
   
 mkdir -p ~/.vim/pack/vendor/start
 for i in ${PLUGINS}
