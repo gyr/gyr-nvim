@@ -4,8 +4,8 @@ vim.cmd.source(vimrc)
 -- disable mouse
 vim.cmd("set mouse=")
 
--- vim.cmd("colorscheme ashen")
-require("ashen").load()
+--require("ashen").load()
+vim.cmd("colorscheme marques-de-itu")
 
 -- Enable rounded borders in floating windows
 vim.o.winborder = "rounded"

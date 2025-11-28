@@ -7,19 +7,21 @@ git clone --recursive git://github.com/gyr/dotnvim.git ~/.config/nvim
 Installing plugins:
 ```
 PLUGINS="http://github.com/ashen-org/ashen.nvim.git
-  https://github.com/ibhagwan/fzf-lua.git
-  http://github.com/tpope/vim-fugitive.git
+  http://github.com/Saghen/blink.cmp.git
+  http://github.com/stevearc/conform.nvim.git
+  http://github.com/ibhagwan/fzf-lua.git
+  http://github.com/lukas-reineke/indent-blankline.nvim.git
+  http://github.com/brennovich/marques-de-itu.git
   http://github.com/neovim/nvim-lspconfig.git
-  https://github.com/Saghen/blink.cmp.git
-  http://github.com/mhinz/vim-signify.git"
+  http://github.com/nvim-treesitter/nvim-treesitter-context.git
+  http://github.com/nvim-treesitter/nvim-treesitter.git
+  http://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
+  http://github.com/rachartier/tiny-glimmer.nvim.git
+  http://github.com/andreasvc/vim-256noir.git
+  http://github.com/tpope/vim-fugitive.git
+  http://github.com/mhinz/vim-signify.git
   http://github.com/tpope/vim-unimpaired.git
-  http://github.com/vimwiki/vimwiki.git
-  https://github.com/nvim-treesitter/nvim-treesitter.git
-  https://github.com/nvim-treesitter/nvim-treesitter-context.git
-  https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
-  https://github.com/lukas-reineke/indent-blankline.nvim.git
-  https://github.com/stevearc/conform.nvim.git
-  https://github.com/rachartier/tiny-glimmer.nvim.git
+  http://github.com/vimwiki/vimwiki.git"
   
 mkdir -p ~/.vim/pack/vendor/start
 for i in ${PLUGINS}
