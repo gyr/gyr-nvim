@@ -22,6 +22,7 @@ PLUGINS="http://github.com/ashen-org/ashen.nvim.git
   http://github.com/mhinz/vim-signify.git
   http://github.com/tpope/vim-unimpaired.git
   http://github.com/vimwiki/vimwiki.git"
+  http://github.com/carlos-algms/agentic.nvim.git
   
 mkdir -p ~/.vim/pack/vendor/start
 for i in ${PLUGINS}

@@ -227,7 +227,7 @@ blink.setup({
 -- =============================================================================
 require("nvim-treesitter.configs").setup({
     -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-    ensure_installed = { "lua", "vim", "python", "xml", "yaml", "bash", "go" },
+    ensure_installed = { "lua", "vim", "python", "xml", "yaml", "bash", "go", "json" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -687,3 +687,16 @@ require("tiny-glimmer").setup({
         priority = 2048,  -- Higher values appear above other plugins
     },
 })
+
+-- =============================================================================
+-- agentic
+-- =============================================================================
+-- Monkey-patch vim.notify to be async-safe
+vim.notify = vim.schedule_wrap(vim.notify)
+
+require("agentic").setup({
+    provider ="gemini-acp"
+})
+vim.keymap.set({"n", "v", "i"}, "<leader>ai", function() require("agentic").toggle() end, { desc = 'Toggle Agentic Chat' })
+vim.keymap.set({"n", "v", "i"}, "<leader>aia", function() require("agentic").add_selection_or_file_to_context() end, { desc = 'Add file or selection to Agentic to Context' })
+vim.keymap.set({"n", "v", "i"}, "<leader>air", function() require("agentic").new_session() end, { desc = 'New Agentic Sssion' })
