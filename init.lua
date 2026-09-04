@@ -13,7 +13,6 @@ vim.pack.add({
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/nvim-treesitter/nvim-treesitter-context",
     "https://github.com/nvim-treesitter/nvim-treesitter",
-    "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
     "https://github.com/rachartier/tiny-glimmer.nvim",
     "https://github.com/tpope/vim-fugitive",
     "https://github.com/mhinz/vim-signify",
@@ -293,42 +292,6 @@ vim.api.nvim_create_autocmd("FileType", {
         pcall(vim.treesitter.start, args.buf)
     end,
 })
-
--- =============================================================================
--- nvim-treesitter-textobjects (main branch)
--- =============================================================================
--- Also module-free: setup() takes behaviour options only and every mapping is
--- declared explicitly. Only the function and class objects are mapped; the
--- movement maps the old config used (]m [m ]M [M ]] [[ ][ []) are already Vim
--- motions, ]s/[s ]z/[z ]i/[i are built-ins for spell, folds and includes, and
--- [o/]o belong to vim-unimpaired's option toggles. `as` is "a sentence".
-require("nvim-treesitter-textobjects").setup({
-    select = {
-        -- Automatically jump forward to textobj, similar to targets.vim
-        lookahead = true,
-        selection_modes = {
-            ["@function.outer"] = "V", -- linewise
-            ["@class.outer"] = "<c-v>", -- blockwise
-        },
-        -- Extend any textobject to include surrounding whitespace, like `ap`
-        include_surrounding_whitespace = true,
-    },
-})
-
-local ts_select = require("nvim-treesitter-textobjects.select")
-
-local ts_textobjects = {
-    { "af", "@function.outer", "Select outer part of a function region" },
-    { "if", "@function.inner", "Select inner part of a function region" },
-    { "ac", "@class.outer",    "Select outer part of a class region" },
-    { "ic", "@class.inner",    "Select inner part of a class region" },
-}
-for _, obj in ipairs(ts_textobjects) do
-    local lhs, query, desc = obj[1], obj[2], obj[3]
-    vim.keymap.set({ "x", "o" }, lhs, function()
-        ts_select.select_textobject(query, "textobjects")
-    end, { desc = desc })
-end
 
 -- nvin-treesitter-context
 require("treesitter-context").setup({
