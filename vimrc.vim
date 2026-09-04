@@ -680,7 +680,6 @@ cnoremap <expr> * getcmdline() =~ '.*\*\*$' ? '/*' : '*'
 "}}}2
 "-------------------------------------------------------------------------------
 " Copy/Paste:{{{2
-noremap Y y$
 noremap <Leader>y "+y
 noremap <Leader>d "+d
 noremap <Leader>px :set paste<CR>:put  *<CR>:set nopaste<CR>
