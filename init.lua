@@ -2,7 +2,6 @@
 -- PLUGIN MANAGEMENT: vim.pack (Neovim 0.12)
 -- =============================================================================
 vim.pack.add({
-    "https://github.com/ashen-org/ashen.nvim",
     "https://github.com/Saghen/blink.lib",  -- Required by blink.cmp v2
     "https://github.com/Saghen/blink.cmp",
     "https://github.com/stevearc/conform.nvim",
@@ -33,7 +32,6 @@ vim.cmd.source(vimrc)
 -- disable mouse
 vim.cmd("set mouse=")
 
---require("ashen").load()
 vim.cmd("colorscheme marques-de-itu")
 
 -- Enable rounded borders in floating windows

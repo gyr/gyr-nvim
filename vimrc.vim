@@ -355,7 +355,6 @@ if &t_Co > 16
         set termguicolors
     endif
     "colorscheme 256_noir
-    colorscheme ashen
 endif
 
 "}}}2

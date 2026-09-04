@@ -4,10 +4,6 @@
       "rev": "81628c1dc07edadd1c2c3c27d8dbcb424da1dea0",
       "src": "https://github.com/carlos-algms/agentic.nvim"
     },
-    "ashen.nvim": {
-      "rev": "bfb04bd50b69d863469b2deb9fb361cf0d945ba7",
-      "src": "https://github.com/ashen-org/ashen.nvim"
-    },
     "blink.cmp": {
       "rev": "2befba190e0ffa3692ab364f75604c9c2d248adf",
       "src": "https://github.com/Saghen/blink.cmp"

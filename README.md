@@ -31,7 +31,6 @@ Remove from `init.lua` and run:
 
 ## Installed Plugins
 
-- ashen.nvim - Color scheme
 - blink.lib - Required dependency for blink.cmp v2
 - blink.cmp - Auto-completion
 - conform.nvim - Formatting
