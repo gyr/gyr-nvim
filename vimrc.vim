@@ -46,7 +46,6 @@ filetype plugin indent on
 " to see all options => :options
 "-------------------------------------------------------------------------------
 " Important:{{{2
-set nocompatible    " Modo "No compatible" . Valores padrao para algumas opcoes sao adequados ao Vim, nao Vi.
 set cpoptions+=$J
 "set pastetoggle=<Insert>
 
@@ -60,8 +59,6 @@ set path+=$HOME/.gyr.d/**
 set path+=$HOME/.config/nvim/**
 set path+=**        " Search down into subfolders
                     " Provides tab-completion for all file-related tasks
-set incsearch       " Search while typing
-set magic           " Use magic patterns  (extended regular expressions) in search patterns
 set ignorecase      " Ignore case on search
 set smartcase       " Consider noic when search has upper case
 
@@ -75,7 +72,6 @@ set showfulltag     " Show more information while completing tags
 "-------------------------------------------------------------------------------
 " Displaying text:{{{2
 set scrolloff=5     " Keep 3 lines below/above the cursor
-set wrap            " Desliga quebra de linhas. As linhas vao ficar longas, ultrapassando a margem direita.
 set linebreak nolist   " When wrap is on break lines at 'breakat', do not add <EOL>. list must be off. The linebreak setting will not work when the list setting is enabled.
 if has("multi_byte")
     set showbreak=↪\      " String to put at the start of lines that have been wrapped (wrap must be on). number must be off.
@@ -99,17 +95,14 @@ set numberwidth=1   " Use 1 col + 1 space for numbers
 " Syntax, highlighting and spelling:{{{2
 if &t_Co > 2 || has("gui_running")
     syntax enable
-    set hlsearch         " Highligh search
     set background=dark " Use colors which look better on the background
     set synmaxcol=2000   " Syntax coloring lines that are too long just slows down the world
     let c_comment_strings=1 "highlighting strings inside C comments.
 endif
-set nocursorcolumn
 set cursorline
 if exists('+colorcolumn')
     set colorcolumn=+1
 endif
-set spelllang=en
 
 "}}}2
 "-------------------------------------------------------------------------------
@@ -129,7 +122,6 @@ let &t_EI = "\e[2 q"
 "}}}2
 "-------------------------------------------------------------------------------
 " Multiple windows:{{{2
-set laststatus=2    " Sempre exibe a barra de status
 if has('statusline')
     set statusline=
     set statusline+=[%n]      " buffer number
@@ -160,8 +152,6 @@ if has('statusline')
     set statusline+=%l/%L    " cursor line/total lines
     set statusline+=\|%P     " percent through file
 endif
-set equalalways      " do not resize windows to the same size
-set hidden           " allow editing multiple unsaved buffers
 set splitbelow
 set splitright
 set switchbuf=useopen,usetab
@@ -175,7 +165,6 @@ if match($TERM, "screen") != -1
 else
     let g:GNU_Screen_used = 0
 endif
-set ttyfast         " Send more characters to terminal, improving windows redraw
 set title           " Display the file name on status bar
 set titlestring=%t%(\ [%R%M]%)
 
@@ -187,13 +176,8 @@ set titlestring=%t%(\ [%R%M]%)
 "}}}2
 "-------------------------------------------------------------------------------
 " Messages and info:{{{2
-set showcmd         " Display the command on status bar
-set showmode        " Display the input mode on status bar
-set ruler           " Display the cursor position on status bar
 set report=0        " Warning when lines change
 set confirm         " Confirm operation
-set noerrorbells    " don't make noise
-set novisualbell
 
 "}}}2
 "-------------------------------------------------------------------------------
@@ -218,10 +202,6 @@ endif
 "-------------------------------------------------------------------------------
 " Editing text:{{{2
 set undolevels=5000 " Undo level
-if exists('+undoreload')
-    set undoreload=10000
-endif
-set backspace=indent,eol,start " <BACKSpace> works on indentantion, line break and the start of insert
 set formatoptions+=tn "list of flags that tell how automatic formatting works
 set complete=.,w,b,u,U,t " do not scan include files
 set dictionary=/usr/share/dict/words " more words!
@@ -229,7 +209,6 @@ set infercase       " in insert mode and ignorecase on the case of the match is 
 set showmatch       " Show matchs
 set matchtime=2     " For .2 seconds
 set matchpairs+=<:>
-set nojoinspaces    " on join lines, after a '.', '?' and '!' add only one space
 
 "}}}2
 "-------------------------------------------------------------------------------
@@ -237,11 +216,9 @@ set nojoinspaces    " on join lines, after a '.', '?' and '!' add only one space
 " Para converter tab em espaco usar o comando [:retab]
 set tabstop=4       " <Tab> width
 set shiftwidth=4    " Autoindent width
-set smarttab
 set softtabstop=4   " <BACKSpace> in an indentantion delete 4 characters
 set shiftround      " indent using multiple of shiftwidth for > and <
 set expandtab       " Replace <Tab> to <Space>
-set autoindent
 "set smartindent   "Disable due to cindent
 set cindent
 set cinoptions+=l1,t0,i0,(0
@@ -281,10 +258,8 @@ set diffopt+=vertical "force diff vertical split
 "}}}2
 "-------------------------------------------------------------------------------
 " Reading and writing files:{{{2
-set fileformat=unix " Unix file format
 set backup
 set backupdir=~/.nvim-tmp/backup,~/.tmp,~/tmp,/var/tmp,/tmp
-set noautowrite     " don't automatically write on :next, etc
 
 "}}}2
 "-------------------------------------------------------------------------------
@@ -304,7 +279,6 @@ set wildignore+=*//.git/**/*,*/.hg/**/*,*/.svn/**/*
 if exists("&wildignorecase")
     set wildignorecase
 endif
-set wildmenu
 set wildoptions=fuzzy,pum
 if exists('+undofile') | set undofile | endif
 if exists('+undodir') | set undodir=~/.nvim-tmp/undo,~/.tmp,~/tmp,/var/tmp,/tmp | endif
@@ -313,7 +287,6 @@ if exists('+undodir') | set undodir=~/.nvim-tmp/undo,~/.tmp,~/tmp,/var/tmp,/tmp 
 "-------------------------------------------------------------------------------
 " Running make and jumping to errors:{{{2
 set grepprg=rg\ --color=never\ --vimgrep\ $*
-set grepformat=%f:%l:%c:%m
 
 "}}}2
 "-------------------------------------------------------------------------------
@@ -334,7 +307,6 @@ set viminfo+='10,:20
 "    behave mswin
 "endif
 
-set encoding=utf-8
 "let &termencoding = &encoding
 let &fileencoding = &encoding
 let &fileencodings = &encoding
