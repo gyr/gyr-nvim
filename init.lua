@@ -60,10 +60,14 @@ local on_attach = function(client, bufnr)
     end
 
     -- Buffer-local keymaps for LSP features
-    local opts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set('n', 'grd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'grk', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'grf', vim.lsp.buf.format, { desc = 'Format current buffer using lsp' })
+    local function map(lhs, rhs, desc)
+        vim.keymap.set('n', lhs, rhs, { noremap = true, silent = true, buffer = bufnr, desc = desc })
+    end
+    map('grd', vim.lsp.buf.definition, 'Go to definition')
+    map('grk', vim.lsp.buf.hover, 'Show hover documentation')
+    map('grf', vim.lsp.buf.format, 'Format current buffer using lsp')
+    -- grt in Normal mode maps to vim.lsp.buf.type_definition()
+    -- grx in Normal mode maps to vim.lsp.codelens.run()
     -- grn in Normal mode maps to vim.lsp.buf.rename()
     -- grr in Normal mode maps to vim.lsp.buf.references()
     -- gri in Normal mode maps to vim.lsp.buf.implementation()
