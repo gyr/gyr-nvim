@@ -354,7 +354,6 @@ if &t_Co > 16
     if has('termguicolors')
         set termguicolors
     endif
-    "colorscheme 256_noir
 endif
 
 "}}}2
@@ -992,7 +991,6 @@ if has("gui_running")
     "
     "colorscheme gyr_paleturquoise256
     "colorscheme gyrcolor
-    colorscheme 256_noir
 endif
 if has("win32")
     set guifont=ProggyCleanSZ:h8:cDEFAULT

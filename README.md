@@ -42,7 +42,6 @@ Remove from `init.lua` and run:
 - nvim-treesitter-context - Show context
 - nvim-treesitter-textobjects - Text objects
 - tiny-glimmer.nvim - Animations
-- vim-256noir - Color scheme
 - vim-fugitive - Git integration
 - vim-signify - Git diff signs
 - vim-unimpaired - Bracket mappings
