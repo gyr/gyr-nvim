@@ -41,6 +41,5 @@ Remove from `init.lua` and run:
 - nvim-treesitter - Syntax highlighting
 - tiny-glimmer.nvim - Animations
 - vim-signify - Git diff signs
-- vim-unimpaired - Bracket mappings
 - vimwiki - Wiki
 - agentic.nvim - AI assistant

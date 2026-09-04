@@ -44,10 +44,6 @@
       "rev": "3b5ae37eb2b77c3ae58d60dfdc3fc30258078663",
       "src": "https://github.com/mhinz/vim-signify"
     },
-    "vim-unimpaired": {
-      "rev": "db65482581a28e4ccf355be297f1864a4e66985c",
-      "src": "https://github.com/tpope/vim-unimpaired"
-    },
     "vimwiki": {
       "rev": "a54a3002e229c4b43d69ced170ff77663a5b2c40",
       "src": "https://github.com/vimwiki/vimwiki"

@@ -793,24 +793,6 @@ endif
 noremap <unique><Up> <C-Y>
 noremap <unique><Down> <C-E>
 
-" Small unimpaired map set
-"noremap <unique>[a :previous<CR>
-"noremap <unique>]a :next<CR>
-"noremap <unique>[A :first<CR>
-"noremap <unique>]A :last<CR>
-"noremap <unique>[b :bprevious<CR>
-"noremap <unique>]b :bnext<CR>
-"noremap <unique>[B :bfirst<CR>
-"noremap <unique>]B :blast<CR>
-"noremap <unique>[l :lprevious<CR>
-"noremap <unique>]l :lnext<CR>
-"noremap <unique>[L :lfirst<CR>
-"noremap <unique>]L :llast<CR>
-"noremap <unique>[q :cprevious<CR>
-"noremap <unique>]q :cnext<CR>
-"noremap <unique>[Q :cfirst<CR>
-"noremap <unique>]Q :clast<CR>
-
 "}}}2
 "-------------------------------------------------------------------------------
 " Visual Mode:{{{2

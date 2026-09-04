@@ -14,7 +14,6 @@ vim.pack.add({
     "https://github.com/nvim-treesitter/nvim-treesitter",
     "https://github.com/rachartier/tiny-glimmer.nvim",
     "https://github.com/mhinz/vim-signify",
-    "https://github.com/tpope/vim-unimpaired",
     "https://github.com/vimwiki/vimwiki",
     "https://github.com/carlos-algms/agentic.nvim",
 })
