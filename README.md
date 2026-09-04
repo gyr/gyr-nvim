@@ -40,7 +40,6 @@ Remove from `init.lua` and run:
 - nvim-lspconfig - LSP server definitions (cmd/filetypes/root_markers)
 - nvim-treesitter - Syntax highlighting
 - tiny-glimmer.nvim - Animations
-- vim-fugitive - Git integration
 - vim-signify - Git diff signs
 - vim-unimpaired - Bracket mappings
 - vimwiki - Wiki

@@ -125,10 +125,6 @@ let &t_EI = "\e[2 q"
 if has('statusline')
     set statusline=
     set statusline+=[%n]      " buffer number
-    try
-        set statusline+=%{fugitive#statusline()}
-    catch
-    endtry
     set statusline+=\ %<%f\   " path to the file, as typed or relative to
                                  " current directory
     set statusline+=%m       " modified flag
