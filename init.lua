@@ -669,3 +669,19 @@ require("agentic").setup({
 vim.keymap.set({"n", "v", "i"}, "<leader>ai", function() require("agentic").toggle() end, { desc = 'Toggle Agentic Chat' })
 vim.keymap.set({"n", "v", "i"}, "<leader>aia", function() require("agentic").add_selection_or_file_to_context() end, { desc = 'Add file or selection to Agentic to Context' })
 vim.keymap.set({"n", "v", "i"}, "<leader>air", function() require("agentic").new_session() end, { desc = 'New Agentic Sssion' })
+
+-- Sync Neovim yank/paste register with the system clipboard
+vim.opt.clipboard = "unnamedplus"
+
+-- Tell Neovim to use native OSC 52 terminal sequences for clipboard operations
+vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+        ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+        ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+    },
+}
