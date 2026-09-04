@@ -23,8 +23,9 @@ for s:dir in s:list_dir
     call gyrlib#EnsureDirExists(s:base_dir.s:dir)
 endfor
 
-" Pack plugin
-call gyrlib#EnsureDirExists($HOME."/.config/nvim/pack/vendor/start")
+" Pack plugin - Now managed by vim.pack (Neovim 0.12)
+" Plugins are installed in ~/.local/share/nvim/site/pack/core/opt/
+" call gyrlib#EnsureDirExists($HOME."/.config/nvim/pack/vendor/start")
 
 let g:netrw_home = s:base_dir
 let g:netrw_winsize=10
@@ -399,7 +400,7 @@ let c_hi_identifiers = 'all'
 let c_hi_libs = ['*']
 
 " Vimwiki: {{{3
-if isdirectory($HOME."/.config/nvim/pack/vendor/start/vimwiki")
+if isdirectory(stdpath('data').'/site/pack/core/opt/vimwiki')
     let gyr_wiki = {}
     let gyr_wiki.path = '~/.gyr.d/vimwiki/'
     let gyr_wiki.path_html = '~/.gyr.d/public_html/'
@@ -451,7 +452,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_use_neovim_diagnostics_api = 1
 
 " FZF: {{{3
-if isdirectory($HOME."/.config/nvim/pack/vendor/start/fzf.vim")
+if isdirectory(stdpath('data').'/site/pack/core/opt/fzf.vim')
     " The mappings for scrolling the preview is done with FZF_DEFAULT_OPTS.
     " You can set this as an environment variable to have it work everywhere,
     " or put it in your vimrc like this.
@@ -921,7 +922,7 @@ nnoremap <C-W>Y <C-W><C-W>:close<Bar>vsplit #<CR>
 "-------------------------------------------------------------------------------
 " Plugins:{{{2
 " FZF: {{{3
-if isdirectory($HOME."/.config/nvim/pack/vendor/start/fzf.vim")
+if isdirectory(stdpath('data').'/site/pack/core/opt/fzf.vim')
     nnoremap <leader>g :GitFiles<CR>
     nnoremap <leader><CR> :Files<CR>
     nnoremap <leader>b :Buffers<CR>
@@ -971,7 +972,7 @@ iab dt,, <C-R>=strftime("%Y%m%d")<cr><C-R>=gyrlib#EatChar('\s')<CR>
 "-------------------------------------------------------------------------------
 " Plugins: {{{2
 " FZF: {{{3
-if isdirectory($HOME."/.config/nvim/pack/vendor/start/fzf.vim")
+if isdirectory(stdpath('data').'/site/pack/core/opt/fzf.vim')
     cab eg,, Files $HOME/.gyr.d/<CR>
     cab ev,, Files $HOME/.config/nvim/<CR>
     cab e.,, Files <C-R>=expand("%:p:h")<CR>/<CR>

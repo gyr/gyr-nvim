@@ -1,3 +1,32 @@
+-- =============================================================================
+-- PLUGIN MANAGEMENT: vim.pack (Neovim 0.12)
+-- =============================================================================
+vim.pack.add({
+    "https://github.com/ashen-org/ashen.nvim",
+    "https://github.com/Saghen/blink.lib",  -- Required by blink.cmp v2
+    "https://github.com/Saghen/blink.cmp",
+    "https://github.com/stevearc/conform.nvim",
+    "https://github.com/ibhagwan/fzf-lua",
+    "https://github.com/lukas-reineke/indent-blankline.nvim",
+    "https://github.com/brennovich/marques-de-itu",
+    -- Supplies the lsp/*.lua definitions (cmd, filetypes, root_markers) that
+    -- vim.lsp.config()/vim.lsp.enable() below extend. Without it no server starts.
+    "https://github.com/neovim/nvim-lspconfig",
+    "https://github.com/nvim-treesitter/nvim-treesitter-context",
+    "https://github.com/nvim-treesitter/nvim-treesitter",
+    "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+    "https://github.com/rachartier/tiny-glimmer.nvim",
+    "https://github.com/andreasvc/vim-256noir",
+    "https://github.com/tpope/vim-fugitive",
+    "https://github.com/mhinz/vim-signify",
+    "https://github.com/tpope/vim-unimpaired",
+    "https://github.com/vimwiki/vimwiki",
+    "https://github.com/carlos-algms/agentic.nvim",
+})
+
+-- =============================================================================
+-- SOURCE VIMRC
+-- =============================================================================
 local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
 vim.cmd.source(vimrc)
 
