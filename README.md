@@ -39,7 +39,6 @@ Remove from `init.lua` and run:
 - marques-de-itu - Color scheme
 - nvim-lspconfig - LSP server definitions (cmd/filetypes/root_markers)
 - nvim-treesitter - Syntax highlighting
-- nvim-treesitter-context - Show context
 - tiny-glimmer.nvim - Animations
 - vim-fugitive - Git integration
 - vim-signify - Git diff signs
