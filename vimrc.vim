@@ -99,7 +99,6 @@ if &t_Co > 2 || has("gui_running")
     set synmaxcol=2000   " Syntax coloring lines that are too long just slows down the world
     let c_comment_strings=1 "highlighting strings inside C comments.
 endif
-set cursorline
 if exists('+colorcolumn')
     set colorcolumn=+1
 endif
@@ -453,10 +452,6 @@ augroup Gyr
                 \   setlocal relativenumber |
                 \ endif
 
-    " Cursorline
-    autocmd WinLeave * setlocal nocursorline nocursorcolumn
-    autocmd WinEnter * setlocal cursorline
-
     "Return to last edit position
     autocmd BufReadPost *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -582,8 +577,6 @@ nnoremap <silent><unique><leader>v :e ~/.config/nvim/vimrc.vim<CR>
 " aSUFFIX<Esc>    Append SUFFIX
 " `<              Go to beginning of former visual selection
 " iPREFIX<Esc>    Insert PREFIX
-
-"nnoremap <silent><unique><Leader>c :set cursorcolumn! cursorline!<CR>
 
 nnoremap <unique><Leader>? ggVGg?
 
