@@ -36,10 +36,6 @@
       "rev": "427e9222363d07c32d6db6169e4049c28d58d141",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
-    "tiny-glimmer.nvim": {
-      "rev": "9a48d8a7436231cb16d47c88f924702e5602870a",
-      "src": "https://github.com/rachartier/tiny-glimmer.nvim"
-    },
     "vim-signify": {
       "rev": "3b5ae37eb2b77c3ae58d60dfdc3fc30258078663",
       "src": "https://github.com/mhinz/vim-signify"
