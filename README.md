@@ -1,6 +1,6 @@
 Installation:
 ```
-git clone --recursive git://github.com/gyr/dotnvim.git ~/.config/nvim
+git clone git://github.com/gyr/gyr-nvim.git ~/.config/nvim
 ```
 
 ## Plugin Management (Neovim 0.12+ with vim.pack)
@@ -14,12 +14,16 @@ Launch nvim and plugins will be installed automatically on first run.
 ```
 
 **Adding a plugin:**
-Edit `init.lua` and add to the `vim.pack.add({ ... })` list, then reload Neovim.
+Edit `lua/plugins/init.lua` and add to the `vim.pack.add({ ... })` list, then reload Neovim.
 
 **Removing a plugin:**
-Remove from `init.lua` and run:
+Remove from `lua/plugins/init.lua` and run:
 ```vim
 :lua vim.pack.del("plugin-name")
+```
+Or, after restarting Neovim, remove every plugin no longer in the list:
+```vim
+:PackClean
 ```
 
 **Check plugin health:**
@@ -35,10 +39,11 @@ Remove from `init.lua` and run:
 - blink.cmp - Auto-completion
 - conform.nvim - Formatting
 - fzf-lua - Fuzzy finder
+- gitsigns.nvim - Git diff signs and hunk actions
 - indent-blankline.nvim - Indentation guides
+- lualine.nvim - Statusline
 - marques-de-itu - Color scheme
 - nvim-lspconfig - LSP server definitions (cmd/filetypes/root_markers)
 - nvim-treesitter - Syntax highlighting
-- vim-signify - Git diff signs
 - vimwiki - Wiki
 - agentic.nvim - AI assistant

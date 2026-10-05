@@ -381,15 +381,15 @@ function! gyrlib#ToggleNumberMode()
 endfunction
 " }}}3
 
-" gyrlib#NextTextObject{{{3
-" https://gist.github.com/1171642
-" usage: Motion for "next object". For example, "din(" would go to the next
-" "()" pair and delete its contents.
-function! gyrlib#NextTextObject(motion, dir)
-    let c = nr2char(getchar())
-    exe "normal! ".a:dir.c."v".a:motion.c
-endfunction
-" }}}3
+"" gyrlib#NextTextObject{{{3
+"" https://gist.github.com/1171642
+"" usage: Motion for "next object". For example, "din(" would go to the next
+"" "()" pair and delete its contents.
+"function! gyrlib#NextTextObject(motion, dir)
+"    let c = nr2char(getchar())
+"    exe "normal! ".a:dir.c."v".a:motion.c
+"endfunction
+"" }}}3
 
 " gyrlib#QuickfixFilenames{{{3
 " http://vimcasts.org/episodes/project-wide-find-and-replace/

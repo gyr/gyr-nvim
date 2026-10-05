@@ -72,15 +72,15 @@ if g:gyrplugin_map_keys
 
     inoremap <Tab> <C-R>=gyrlib#SmartComplete()<CR>
 
-    onoremap an :<c-u>call gyrlib#NextTextObject('a', 'f')<cr>
-    xnoremap an :<c-u>call gyrlib#NextTextObject('a', 'f')<cr>
-    onoremap in :<c-u>call gyrlib#NextTextObject('i', 'f')<cr>
-    xnoremap in :<c-u>call gyrlib#NextTextObject('i', 'f')<cr>
+    "onoremap an :<c-u>call gyrlib#NextTextObject('a', 'f')<cr>
+    "xnoremap an :<c-u>call gyrlib#NextTextObject('a', 'f')<cr>
+    "onoremap in :<c-u>call gyrlib#NextTextObject('i', 'f')<cr>
+    "xnoremap in :<c-u>call gyrlib#NextTextObject('i', 'f')<cr>
 
-    onoremap al :<c-u>call gyrlib#NextTextObject('a', 'F')<cr>
-    xnoremap al :<c-u>call gyrlib#NextTextObject('a', 'F')<cr>
-    onoremap il :<c-u>call gyrlib#NextTextObject('i', 'F')<cr>
-    xnoremap il :<c-u>call gyrlib#NextTextObject('i', 'F')<cr>
+    "onoremap al :<c-u>call gyrlib#NextTextObject('a', 'F')<cr>
+    "xnoremap al :<c-u>call gyrlib#NextTextObject('a', 'F')<cr>
+    "onoremap il :<c-u>call gyrlib#NextTextObject('i', 'F')<cr>
+    "xnoremap il :<c-u>call gyrlib#NextTextObject('i', 'F')<cr>
 
     xnoremap * :<C-u>call gyrlib#VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
     xnoremap # :<C-u>call gyrlib#VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
