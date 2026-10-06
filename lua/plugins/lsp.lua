@@ -108,6 +108,7 @@ vim.lsp.enable("ruff")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("gopls")
 vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("bashls")
 
 -- =============================================================================
 -- Highlight the element under cursor
