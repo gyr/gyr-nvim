@@ -23,7 +23,6 @@ setlocal makeprg=perl\ -c\ %
 setlocal errorformat+=%m\ at\ %f\ line\ %l%.%#
 setlocal errorformat+=%m\ at\ %f\ line\ %l\.
 setlocal errorformat+=%m\ at\ %f\ line\ %l
-setlocal omnifunc=syntaxcomplete#Complete
 setlocal foldmethod=syntax
 setlocal matchpairs+==:;
 

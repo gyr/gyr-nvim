@@ -39,9 +39,6 @@ setlocal softtabstop=4
 setlocal expandtab
 setlocal textwidth=79
 
-" include python tags
-setlocal tags+=~/.vim-tmp/tags/python27tags
-
 "}}}1
 "===============================================================================
 " Mapping:{{{1
@@ -51,7 +48,6 @@ noremap <buffer><Leader>mx :call gyrlib#MakeExecutable()<CR>
 "===============================================================================
 " Abbreviation:{{{1
 iab <buffer> fh,, <C-R>=gyrlib#AddFh('#', 'short')<CR><C-R>=gyrlib#EatChar('\s')<CR>
-cab <buffer> ctags,, !ctags -R -f ~/.vim-tmp/tags/python.ctags /usr/lib/python2.5/
 
 " }}}1
 "===============================================================================

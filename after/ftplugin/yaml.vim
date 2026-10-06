@@ -17,8 +17,6 @@ set cpo&vim
 "===============================================================================
 " Settings:{{{1
 
-setlocal omnifunc& omnifunc=yamlcomplete#CompleteTags
-
 " Set the makeprg to use yamllint with the parsable output format
 setlocal makeprg=yamllint\ --format\ parsable\ %
 " Define the errorformat for yamllint's output

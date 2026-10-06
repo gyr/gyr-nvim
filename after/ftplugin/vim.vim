@@ -20,8 +20,6 @@ set cpo&vim
 
 call gyrlib#ProgTextMode()
 setlocal foldmethod=marker
-"" include vim tags
-setlocal tags+=,~/.vim-tmp/tags/vimtags
 
 " }}}1
 "===============================================================================
