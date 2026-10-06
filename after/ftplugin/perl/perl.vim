@@ -48,24 +48,6 @@ setlocal expandtab
 "-------------------------------------------------------------------------------
 " Plugin:{{{2
 "
-" vim-lsp: {{{3
-" perl lsp (sudo zypper install cpanminus; cpanm Perl::LanguageServer)
-if executable('perl-language-server')
-    " pip install python-lsp-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'perl-language-server',
-        \ 'cmd': {server_info->['perl-language-server']},
-        \ 'allowlist': ['perl'],
-        \ })
-endif
-"
-" ale: {{{3
-let b:ale_linters = {
-    \   'perl': ['perlcritic'],
-    \ }
-let b:ale_fixer = {
-    \   'perl': ['perltidy'],
-    \ }
 
 " }}}1
 "===============================================================================

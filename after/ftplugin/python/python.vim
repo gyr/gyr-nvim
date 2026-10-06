@@ -53,26 +53,6 @@ setlocal tags+=~/.vim-tmp/tags/python27tags
 "-------------------------------------------------------------------------------
 " Plugin:{{{2
 "
-" vim-lsp: {{{3
-" python lsp (requires python311-python-lsp-server{,-all}
-if executable('pylsp')
-    " pip install python-lsp-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pylsp',
-        \ 'cmd': {server_info->['pylsp']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
-
-" ale: {{{3
-let b:ale_linters = {
-    \   'python': ['ruff', 'mypy'],
-    \ }
-let b:ale_fixers = {
-    \   'python': ['ruff', 'ruff_format'],
-    \ }
-let b:ale_python_flake8_options = '--ignore=E501'
-let b:ale_python_pylint_options = '--disable=missing-docstring'
 
 "}}}2
 "-------------------------------------------------------------------------------

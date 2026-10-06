@@ -35,24 +35,6 @@ setlocal textwidth=79
 "-------------------------------------------------------------------------------
 " Plugin:{{{2
 "
-" vim-lsp: {{{3
-" lua lsp (requires lua-language-server
-if executable('lua-language-server')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'lua-language-server',
-        \ 'cmd': {server_info->['lua-language-server']},
-        \ 'allowlist': ['lua'],
-        \ })
-endif
-
-" ale: {{{3
-let b:ale_linters = {
-    \   'lua': ['luacheck'],
-    \ }
-let b:ale_fixers = {
-    \   'lua': ['stylua'],
-    \ }
-let g:ale_lua_luacheck_options = '--no-max-line-length'
 
 "}}}2
 "-------------------------------------------------------------------------------

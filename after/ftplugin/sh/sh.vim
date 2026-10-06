@@ -26,15 +26,6 @@ call gyrlib#ProgTextMode()
 "-------------------------------------------------------------------------------
 " Plugin:{{{2
 "
-" ale: {{{3
-let b:ale_linters = {
-    \   'sh': ['shellcheck', 'bashate'],
-    \ }
-let b:ale_fixers = {
-    \   'sh': ['shfmt'],
-    \ }
-let g:ale_sh_shellcheck_options = '-e SC2162'
-let g:ale_sh_bashate_options = '-i E006'
 
 "}}}1
 "===============================================================================

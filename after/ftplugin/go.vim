@@ -33,24 +33,6 @@ setlocal expandtab
 "-------------------------------------------------------------------------------
 " Plugin:{{{2
 "
-" ale: {{{3
-let b:ale_linters = {
-    \   'go': ['golangci-lint'],
-    \ }
-" Set golangci-lint specific options
-" This tells ALE to check the entire Go package, not just the current file.
-" This is generally recommended for golangci-lint to work correctly with type checking.
-let g:ale_go_golangci_lint_package = 1
-" You can pass additional options to golangci-lint if needed
-" For example, to use a specific config file (default is .golangci.yml)
-" let g:ale_go_golangci_lint_options = '--config=/path/to/.golangci.yml'
-" Or to enable/disable specific linters
-" let g:ale_go_golangci_lint_options = '--enable=goimports,unparam --disable=errcheck'
-
-" Set up gofmt as a fixer for Go files
-let b:ale_fixers = {
-    \   'go': ['gofmt'],
-    \}
 
 " }}}1
 "===============================================================================
