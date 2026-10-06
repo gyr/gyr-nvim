@@ -15,6 +15,7 @@ local ts_parsers = {
     "markdown",
     "markdown_inline",
     "python",
+    "rust",
     "vim",
     "xml",
     "yaml",
