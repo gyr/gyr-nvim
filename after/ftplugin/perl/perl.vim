@@ -42,10 +42,6 @@ setlocal softtabstop=4
 " And they really are spaces, *not* tabs
 setlocal expandtab
 
-"-------------------------------------------------------------------------------
-" Plugin:{{{2
-"
-
 " }}}1
 "===============================================================================
 " Mapping:{{{1
@@ -63,16 +59,5 @@ iab <buffer> fh,, <C-R>=gyrlib#AddFh('#', 'short')<CR><C-R>=gyrlib#EatChar('\s')
 
 let &cpo = s:keep_cpo
 unlet s:keep_cpo
-
-if !exists('s:load_perl')
-    finish
-endif
-let s:load_perl = 1
-
-"===============================================================================
-" Functions:{{{1
-
-"}}}1
-"===============================================================================
 
 " vim: set filetype=vim fileformat=unix foldmethod=marker :
