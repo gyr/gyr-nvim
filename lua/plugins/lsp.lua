@@ -88,10 +88,20 @@ vim.lsp.config("gopls", {
     },
 })
 
+vim.lsp.config("rust_analyzer", {
+    settings = {
+        ["rust-analyzer"] = {
+            cargo = { features = "all" },
+            check = { command = "clippy" },
+        },
+    },
+})
+
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("gopls")
+vim.lsp.enable("rust_analyzer")
 
 -- =============================================================================
 -- Highlight the element under cursor
