@@ -24,8 +24,8 @@ call gyrlib#ProgTextMode()
 " :cn :cp :cl :cw :cope :ccl
 "setlocal makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
 "setlocal efm& efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
-set errorformat=%f:%l:\ [%t%n%m
+setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+setlocal errorformat=%f:%l:\ [%t%n%m
 
 setlocal foldmethod& foldmethod=indent
 " Indentation sets

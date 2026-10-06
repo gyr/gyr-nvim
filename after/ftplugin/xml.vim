@@ -20,9 +20,9 @@ set cpo&vim
 "setlocal omnifunc& omnifunc=xmlcomplete#CompleteTags
 
 " Set the makeprg to use xmllint with the shellredirect option for error capture
-set makeprg=xmllint\ --noout\ --shellredirect\ 1\ %
+setlocal makeprg=xmllint\ --noout\ --shellredirect\ 1\ %
 " Define the errorformat for xmllint's output
-set errorformat=%f:%l:%c:%m
+setlocal errorformat=%f:%l:%c:%m
 
 setlocal foldmethod=indent
 setlocal tabstop=4
