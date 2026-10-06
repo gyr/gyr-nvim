@@ -20,18 +20,6 @@ set cpo&vim
 
 call gyrlib#ProgTextMode()
 setlocal foldmethod=marker
-"" include vim tags
-setlocal tags+=,~/.vim-tmp/tags/vimtags
-"" regenerate tags
-"call system("ctags -R -f ~/.vim/tags/vimtags ~/.vim/bundle/")
-
-"-------------------------------------------------------------------------------
-" Plugin:{{{2
-"
-" ale: {{{3
-let b:ale_linters = {
-    \   'vim': ['vint'],
-    \ }
 
 " }}}1
 "===============================================================================
@@ -45,23 +33,6 @@ noremap <silent><buffer><Leader>u :call gyrlib#UpdateDate()<CR>
 
 "}}}1
 "===============================================================================
-if !exists('s:load_vim')
-    let s:load_vim = 1
-endif
-
-if s:load_vim
-    "===============================================================================
-    " Functions:{{{1
-    "function! s:UpdateDate()
-    "    if getline(5) =~ "\" Update: "
-    "        silent exec "5s/\" Update: .*/\" Update: " . strftime("%Y%m%d %H:%M:%S") . "/"
-    "        normal! ``
-    "    endif
-    "endfunction
-
-    "}}}1
-    "===============================================================================
-endif
 
 let &cpo = s:keep_cpo
 unlet s:keep_cpo

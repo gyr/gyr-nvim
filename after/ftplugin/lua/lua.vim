@@ -31,40 +31,6 @@ setlocal softtabstop=4
 setlocal expandtab
 setlocal textwidth=79
 
-
-"-------------------------------------------------------------------------------
-" Plugin:{{{2
-"
-" vim-lsp: {{{3
-" lua lsp (requires lua-language-server
-if executable('lua-language-server')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'lua-language-server',
-        \ 'cmd': {server_info->['lua-language-server']},
-        \ 'allowlist': ['lua'],
-        \ })
-endif
-
-" ale: {{{3
-let b:ale_linters = {
-    \   'lua': ['luacheck'],
-    \ }
-let b:ale_fixers = {
-    \   'lua': ['stylua'],
-    \ }
-let g:ale_lua_luacheck_options = '--no-max-line-length'
-
-"}}}2
-"-------------------------------------------------------------------------------
-
-"}}}1
-"===============================================================================
-" Autocommand:{{{1
-
-" }}}1
-"===============================================================================
-" Tag Path:{{{1
-
 "}}}1
 "===============================================================================
 " Mapping:{{{1
@@ -80,16 +46,5 @@ iab <buffer> fh,, <C-R>=gyrlib#AddFh('#', 'short')<CR><C-R>=gyrlib#EatChar('\s')
 
 let &cpo = s:keep_cpo
 unlet s:keep_cpo
-
-if exists('s:load_lua')
-    finish
-endif
-let s:load_lua = 1
-
-"===============================================================================
-" Function:{{{1
-
-"}}}1
-"===============================================================================
 
 " vim: set filetype=vim fileformat=unix foldmethod=marker :

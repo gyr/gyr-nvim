@@ -9,6 +9,8 @@ conform.setup({
         python = { "ruff_format" },
         lua = { "stylua" },
         sh = { "shfmt" },
+        perl = { "perltidy" },
+        rust = { "rustfmt" },
     },
     -- Format on save logic
     -- Explicitly set format_on_save to false or nil

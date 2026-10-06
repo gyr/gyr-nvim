@@ -23,7 +23,6 @@ setlocal makeprg=perl\ -c\ %
 setlocal errorformat+=%m\ at\ %f\ line\ %l%.%#
 setlocal errorformat+=%m\ at\ %f\ line\ %l\.
 setlocal errorformat+=%m\ at\ %f\ line\ %l
-setlocal omnifunc=syntaxcomplete#Complete
 setlocal foldmethod=syntax
 setlocal matchpairs+==:;
 
@@ -33,9 +32,6 @@ let perl_want_scope_in_variables = 1
 let perl_extended_vars = 1
 let perl_fold = 1
 let perl_fold_blocks = 1
-"let perl_string_as_statement = 1
-"let perl_no_sync_on_sub = 1
-"let perl_no_sync_on_global_var = 1
 
 " http://search.cpan.org/dist/perl/pod/perlstyle.pod
 " Indents are 4 spaces
@@ -44,28 +40,6 @@ setlocal tabstop=4
 setlocal softtabstop=4
 " And they really are spaces, *not* tabs
 setlocal expandtab
-
-"-------------------------------------------------------------------------------
-" Plugin:{{{2
-"
-" vim-lsp: {{{3
-" perl lsp (sudo zypper install cpanminus; cpanm Perl::LanguageServer)
-if executable('perl-language-server')
-    " pip install python-lsp-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'perl-language-server',
-        \ 'cmd': {server_info->['perl-language-server']},
-        \ 'allowlist': ['perl'],
-        \ })
-endif
-"
-" ale: {{{3
-let b:ale_linters = {
-    \   'perl': ['perlcritic'],
-    \ }
-let b:ale_fixer = {
-    \   'perl': ['perltidy'],
-    \ }
 
 " }}}1
 "===============================================================================
@@ -84,16 +58,5 @@ iab <buffer> fh,, <C-R>=gyrlib#AddFh('#', 'short')<CR><C-R>=gyrlib#EatChar('\s')
 
 let &cpo = s:keep_cpo
 unlet s:keep_cpo
-
-if !exists('s:load_perl')
-    finish
-endif
-let s:load_perl = 1
-
-"===============================================================================
-" Functions:{{{1
-
-"}}}1
-"===============================================================================
 
 " vim: set filetype=vim fileformat=unix foldmethod=marker :

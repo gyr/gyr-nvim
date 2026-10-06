@@ -23,36 +23,14 @@ setlocal softtabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
 
-"-------------------------------------------------------------------------------
-" Plugin:{{{2
-"
-" ale: {{{3
-let b:ale_linters = {
-    \   'json': ['jq', 'jsonlint'],
-    \ }
-let b:ale_fixers = {
-    \   'json': ['jq'],
-    \ }
-
 " }}}1
 "===============================================================================
 " Mapping:{{{1
 " check syntax
-noremap <buffer><Leader>s :!jsonlint %<CR>
+noremap <buffer><Leader>s :!jq empty %<CR>
 
 "}}}1
 "===============================================================================
-if !exists('s:load_json')
-    let s:load_json = 1
-endif
-
-if s:load_json
-    "===============================================================================
-    " Functions:{{{1
-
-    "}}}1
-    "===============================================================================
-endif
 
 let &cpo = s:keep_cpo
 unlet s:keep_cpo

@@ -17,29 +17,16 @@ set cpo&vim
 "===============================================================================
 " Settings:{{{1
 
-"setlocal omnifunc& omnifunc=xmlcomplete#CompleteTags
-
 " Set the makeprg to use xmllint with the shellredirect option for error capture
-set makeprg=xmllint\ --noout\ --shellredirect\ 1\ %
+setlocal makeprg=xmllint\ --noout\ --shellredirect\ 1\ %
 " Define the errorformat for xmllint's output
-set errorformat=%f:%l:%c:%m
+setlocal errorformat=%f:%l:%c:%m
 
 setlocal foldmethod=indent
 setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
-
-"-------------------------------------------------------------------------------
-" Plugin:{{{2
-"
-" ale: {{{3
-let b:ale_linters = {
-    \   'xml': ['xmllint'],
-    \ }
-let b:ale_fixers = {
-    \   'xml': ['xmllint'],
-    \ }
 
 " }}}1
 "===============================================================================
@@ -49,17 +36,6 @@ noremap <buffer><Leader>s :!xmllint %<CR>
 
 "}}}1
 "===============================================================================
-if !exists('s:load_xml')
-    let s:load_xml = 1
-endif
-
-if s:load_xml
-    "===============================================================================
-    " Functions:{{{1
-
-    "}}}1
-    "===============================================================================
-endif
 
 let &cpo = s:keep_cpo
 unlet s:keep_cpo
