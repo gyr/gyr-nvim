@@ -46,9 +46,15 @@ vim.lsp.config("pyright", {
     settings = {
         python = {
             analysis = {
-                -- Crucial: Disable general linting in Pyright to use Ruff instead
-                ignore = { "*" },
+                -- Pyright type-checks; Ruff lints. Silence the two strict-mode
+                -- checks Ruff already reports (F401, F841) to avoid duplicates.
+                -- If "strict" is too verbose (e.g. untyped third-party code),
+                -- downgrade to "standard".
                 typeCheckingMode = "strict",
+                diagnosticSeverityOverrides = {
+                    reportUnusedImport = "none",
+                    reportUnusedVariable = "none",
+                },
             },
         },
         pyright = {
