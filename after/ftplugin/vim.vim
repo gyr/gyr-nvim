@@ -22,8 +22,6 @@ call gyrlib#ProgTextMode()
 setlocal foldmethod=marker
 "" include vim tags
 setlocal tags+=,~/.vim-tmp/tags/vimtags
-"" regenerate tags
-"call system("ctags -R -f ~/.vim/tags/vimtags ~/.vim/bundle/")
 
 "-------------------------------------------------------------------------------
 " Plugin:{{{2
@@ -48,12 +46,6 @@ endif
 if s:load_vim
     "===============================================================================
     " Functions:{{{1
-    "function! s:UpdateDate()
-    "    if getline(5) =~ "\" Update: "
-    "        silent exec "5s/\" Update: .*/\" Update: " . strftime("%Y%m%d %H:%M:%S") . "/"
-    "        normal! ``
-    "    endif
-    "endfunction
 
     "}}}1
     "===============================================================================

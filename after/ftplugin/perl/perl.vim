@@ -33,9 +33,6 @@ let perl_want_scope_in_variables = 1
 let perl_extended_vars = 1
 let perl_fold = 1
 let perl_fold_blocks = 1
-"let perl_string_as_statement = 1
-"let perl_no_sync_on_sub = 1
-"let perl_no_sync_on_global_var = 1
 
 " http://search.cpan.org/dist/perl/pod/perlstyle.pod
 " Indents are 4 spaces

@@ -17,8 +17,6 @@ set cpo&vim
 "===============================================================================
 " Settings:{{{1
 
-"setlocal omnifunc& omnifunc=xmlcomplete#CompleteTags
-
 " Set the makeprg to use xmllint with the shellredirect option for error capture
 setlocal makeprg=xmllint\ --noout\ --shellredirect\ 1\ %
 " Define the errorformat for xmllint's output
