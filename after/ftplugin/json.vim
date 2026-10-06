@@ -27,7 +27,7 @@ setlocal expandtab
 "===============================================================================
 " Mapping:{{{1
 " check syntax
-noremap <buffer><Leader>s :!jsonlint %<CR>
+noremap <buffer><Leader>s :!jq empty %<CR>
 
 "}}}1
 "===============================================================================
