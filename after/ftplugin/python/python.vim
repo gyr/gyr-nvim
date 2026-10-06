@@ -50,12 +50,6 @@ setlocal tags+=~/.vim-tmp/tags/python27tags
 "call system("ctags -R -f ~/.vim-tmp/tags/python27.tags /usr/lib/python2.7")
 "call system("ctags -R -f ~/.vim-tmp/tags/python3.tags /usr/lib/python3")
 
-" set black to format when using gq
-if executable('black')
-    setlocal formatprg=black\ --quiet\ -
-    setlocal formatexpr=
-endif
-
 "-------------------------------------------------------------------------------
 " Plugin:{{{2
 "
