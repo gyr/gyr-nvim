@@ -19,12 +19,6 @@ set cpo&vim
 
 call gyrlib#ProgTextMode()
 
-" Allow make to get syntax errors
-" allows us to run :make and get syntax errors for our python scripts
-" :cn :cp :cl :cw :cope :ccl
-setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
-setlocal errorformat=%f:%l:\ [%t%n%m
-
 setlocal foldmethod& foldmethod=indent
 " Indentation sets
 setlocal smartindent
